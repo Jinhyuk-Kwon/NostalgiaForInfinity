@@ -3,6 +3,11 @@ ARG sourcetag=stable
 FROM ${sourceimage}:${sourcetag}
 USER root
 
+#add patch file
+COPY patch/schema.json /freqtrade/build_helpers/schema.json
+COPY patch/telegram.py /freqtrade/freqtrade/rpc/telegram.py
+COPY patch/constants.py /freqtrade/freqtrade/constants.py
+
 # RUN apt-get update; \
 # 	apt-get install -y --no-install-recommends git git-lfs; \
 # 	\
